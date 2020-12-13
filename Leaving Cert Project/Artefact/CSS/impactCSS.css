@@ -1,0 +1,24 @@
+img {
+	position: relative;
+	top: 30%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body
+{
+	 background-color: #4444;
+}
+
+
+.text {
+  font-family: system-ui;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  
+}
+
+

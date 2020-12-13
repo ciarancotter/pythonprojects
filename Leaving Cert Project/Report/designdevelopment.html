@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Design and Development</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="rationale.html">Report</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="rationale.html">Rationale</a></li>
+            <li><a href="artefact.html">Artefact</a></li>
+            <li><a href="designdevelopment.html">Design and Development</a></li>
+            <li><a href="evaluation.html">Evaluation</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid text-center">
+      <div class="row content">
+        <div class="col-sm-8 text-left">
+          <h1>Design and Development</h1>
+		  <br>
+		  <h4><b>Computational Thinking</b></h4>
+		  <p><u>Decomposition</u></p>
+		  <p>
+		  The project itself consists of four parts - CSV, Python, Firebase and HTML/Javascript. Each part was treated seperately to make it easier to program.
+		  I had the most difficulty with Javascript as I had the least experience working with it compared to the other three parts. I overcame this issue by assigning
+		  myself smaller tasks such as "Get the player motion functioning" or "Successfully receive Firebase data". This approach is characteristic of the Spiral Model - 
+		  each task was equivalent to a "team". 
+		  </p>
+		  <p><u>Abstraction</u></p>
+		  <p>
+		  I reduced the data into a list form to make it easier to work with. During data cleaning, I noticed that there were specific territories that had no relevance such as 
+		  "Middle Class" or "Upper Class". As these were not countries, I manually removed these rows from the data by hand. I then turned my architectures into a diagram to make it 
+		  easier to understand.
+		  </p>
+		  <p><u>Pattern Recognition</u></p>
+		  <p>
+		  The rows in each dataset were the same for the most part because the datasets were created by the same organisation. This allowed me to construct neat graphs of the data and identify
+		  trends. This also made it much easier to generate random questions. 
+		  </p>
+		  <p><u>Algorithm</u></p>
+		  <p>
+		  The algorithm works as follows: the data is read in by Python from the CSVs. The data is cleaned and sent to Firebase. The website read the data from Firebase and concatenates strings
+		  to generate questions. The answers are assigned a path and the colliders check whether or not the answer was correct. The user then receives feedback based on their answer.
+		  </p>
+		  <br>
+		<h4><b>Development Iterations</b></h4>
+		  <p><u>Phase 1</u></p>
+		  <p>
+		  <h5><b>Summary of Phase 1: Data Gathering and Validation</b></h5>
+		  The primary objective of the first phase was to develop a functioning prototype of a rudimentary roguelike game, and to clean and send data to Firebase. As I
+		  had never built a game with Javascript before, I encountered many problems. Firstly, the box that was to represent the player did not show up on the canvas. 
+		  This was due to human error. I had defined the player as "player = gameObject(x, y, z)" instead of "player = new gameObject(x, y, z)". Another major issue I encountered 
+		  was question generation. Rather than sending four datasets with over 9000 values each to Firebase, I opted to generate the questions in the back-end through Python rather than 
+		  the front-end Javascript and Firebase. This reduces operation complexity and adapts to the needs of the user.
+		  <br><br>
+		  For ease of programming, I opted to store data in JSON and import the JSON files into Firebase directly. I used a hierarchy of Question Index -> Year -> Countries 1-4 -> Respective
+		  Carbon Values. This was accomplished using the JSON module and nested dictionaries. I encountered an error importing the JSON - it did not allow characters such as full stops. I manually
+		  cleaned the JSON files in Notepad++ and removed the full stops located in strings such as "St. Lucia" or "Korea Rep.". Python generates JSON files in one line, and to overcome this I used 
+		  the JSON formatting tool on <a href = "https://jsonformatter.curiousconcept.com/">JSON Formatter and Validator</a> to put it in a form that was acceptable by Firebase.
+		  <br><br>
+		  <h5><b>Testing</b></h5>
+		  I sent 1 question to begin with as a test case, and when that worked properly, I successfully imported 40 datapoints on carbon dioxide as a basic resource for Phase 2. The JSON formatter
+		  validated my data to use with Firebase.
+		  <br><br>
+		  <h5><b>User Interface</b></h5>
+		  I also managed to make the movement of the prototype player more fluid by using a new variable (Input = {x:y}). I simulated velocity and acceleration using this to make the animation much
+		  more fluid than a simple "move when the button is pressed" method. Phase 1 successfully developed a player movement system, and generated and stored questions in Firebase. This basic working
+		  version of my project paved the way for further development in Phase 2.
+		  </p>
+		  <br><br>
+		  <p><u>Phase 2</p></u>
+		  <h5><b>Summary of Phase 2: Complete functioning prototype of the Artefact</h5></b>
+		  I implemented a function that checks whether or not the player has crossed a certain x or y coordinate. For example, the game recognised that the player had chosen Country A if they
+		  moved their player to a point with y < 200. The player spawns at coordinates (350, 700). The correct answer is determined by finding the maximum of the datasets list. A createArray() function
+		  was defined which retrieves data from Firebase and pushes them into lists; the questionElements list contains the year and the four country names, and the datasets list contains the four carbon values.
+		  The correct answer is compared to the user's answer. If it is the right answer, the player is led to the next question. If the answer is wrong, a bar graph is drawn of the carbon values of the four countries.
+		  The createArray() function relies on the index keys stored in Firebase: 1, 2, 3, etc. By adding 1 to the qNumber variable and setting it as the parameter of the createArray function, I was easily able to 
+		  retreive new values from Firebase.
+		  <br><br>
+		  <h5><b>Testing</b></h5>
+		  I implemented User Testing in this phase. I asked two of my friends to play the game and give feedback. The review was overwhelmingly positive. No problems were encountered.
+		  There were, however, many problems during the development cycle. The biggest problem was that the graph was being redrawn every frame, which caused a very noticeable lag in the 
+		  player movement. The graph was also unreadably large. I overcame these obstacles by only calling the graph function when the answer was incorrect, and by adding layout constraints during
+		  the drawing process. I used Plotly, a Javascript package, to draw the graph. 
+		  <br><br>
+		  <p><u>Phase 3</u></p>
+		  <h5><b>Summary of Phase 3: Improving the UI</b></h5>
+		  The primary object of the third phase was to make the user interface more intuitive, and to expand the functioning prototype of the game. This objective was successfully accomplished.
+		  I added 40 more questions to the Firebase database that reflect methane values rather than carbon values. This, however, also meant that I had to develop a way of modifying the question to 
+		  reflect this. I uploaded the values with indexes 41-80 to the database. I checked the index of the question using Javascript, and I added a conditional statement that returns a question with "methane"
+		  instead of "carbon" if the index was greater than 40. I also added an instruction at the top of the artefact that specified that the user could use the WASD keys or the arrow keys to move. I added support
+		  for the arrow keys using an OR statement to check for these new keycodes.
+		  <br><br>
+		  <h5><b>Testing</b></h5>
+		  I asked a few of my friends to test out the artefact, as a form of User Testing. This resulted in changes to the alignment of the images, and other UI modifications. The functionality of the artefact
+		  was unaffected and appeared to be satisfactory to the testers.
+		  <br><br>
+		  <p><u>Phase 4</u></p>
+		  <h5><b>Summary of Phase 4</b></h5>
+		  In this phase, I aimed to educate the user on the exact impact of climate change. I added a button beneath the game, which led the user to an index page. The index page had two offshoot pages.
+		  The first page allows the user to interpret carbon data themselves. A "Next" button enables the user to view a wide range of graphs comparing the carbon emissions of four countries. Beneath this graph,
+		  there are a few facts educating the user on carbon emissions. A similar page format was used for methane emissions as well. I added an image of a polar bear stranded on ice to the index page. By interacting 
+		  with the image, the user is able to learn about the climate and its effects. I modified the image of the player to display a sprite of Donald Trump instead of a plain black box. This element of humour engages
+		  the user with the game.
+		  <br><br>
+		  <h5><b>User Testing</h5></b>
+		  I asked two of my friends to participate in User Testing. Subject #1 was satisfied with the artefact. "Meh, pretty good" is a direct quotation from his review. He gave it a 7/10 in terms of fulfilling the 
+		  requirements of the brief. He destructively tested the Carbon Impact page, and identified a bug in the code - clicking through all of the graphs would result in a broken graph. Subject #2 found the Trump character
+		  to be very entertaining. Overall, the testing proved to be very valuable. 
+		  <br><br>
+		  <h5><b>Bugs</b></h5>
+		  Several bugs remain in the software. Firstly, using the arrow control scheme in the quiz game will move the page up and down during play, impeding the user's experience. Secondly, clicking through all of the graphs
+		  in the impact pages will result in a blank graph. Another minor bug was as follows: when the user prompts the wrong answer, the program resets their position to (0,0) on the canvas. By pressing the up button, holding it,
+		  then pressing the left or right button, the user could then move diagonally upwards or downwards, yet the animation would be going left or right. By answering incorrectly, the user could perpetually go upwards upon respawn
+		  with the left or right sprite displayed.
+		  
+				
+				
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

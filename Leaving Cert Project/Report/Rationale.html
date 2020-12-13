@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rationale</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Rationale.html">Report</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="rationale.html">Rationale</a></li>
+            <li><a href="artefact.html">Artefact</a></li>
+            <li><a href="designdevelopment.html">Design and Development</a></li>
+            <li><a href="evaluation.html">Evaluation</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid text-center">
+      <div class="row content">
+        <div class="col-sm-8 text-left">
+		<style>
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			}
+		</style>
+          <h1>Rationale</h1>
+		  <br>
+		  <h2><u>Research</u></h2>
+		  <br>
+		  <p><b>Roguelike Games</b></p>
+		  <p>
+		  Roguelike games refer to a subgenre of RPGs (role-playing games) in which the player ventures through procedurally generated levels, 
+		  usually in the form of a dungeon. Famous roguelike games include <i>UnReal World</i> and <i>Enter the Gungeon</i>. Roguelike games are relatively 
+		  easy to program and originally were made on systems with low memory and have been around since the 1990s.
+
+		  As a case study, I played my copy of Enter the Gungeon on the Nintendo Switch. The game allows the player to control the main character and defeat a 
+		  variety of enemies in each room. When the player defeats all of the enemies in a given room, access to the next room is unlocked. In this way, 
+		  each new room is procedurally generated. I found that playing the roguelike format was a very enjoyable experience and captured my attention.
+		  </p>
+		  <br>
+		  <br>
+		  <img src = "IMG/enter_the_gungeon.jpg" alt = "Enter the Gungeon" align = "middle" width = "400" height = "250" >
+		  <br>
+		  <br>
+		  <p><b>The Quiz</b></p>
+		  <p>
+		  The use of a quiz to educate people is nothing new. Popular quiz games include Quizup and Kahoot among their ranks.By randomising the questions, 
+		  a quiz project can allow people to obtain a grasp of the scale of the climate crisis. However, a quiz project alone is not very exciting or 
+		  interesting to the user. To combat this, I decided to build the quiz in the style of a roguelike game to capture the attention of the user. 
+
+		  I installed the application Quizup to investigate the concept of a quiz game. Quizup is a game that gives the player randomised questions, 
+		  which they must answer faster than their opponent. The questions are delivered in the form of a 4-option multiple choice format. This reduces 
+		  the risk of the user getting caught up in indecision. The quiz provides an effective medium for a trial-and-error playing style - the user is not informed of the
+		  correct answer beforehand, nor is the user expected to know the correct answer.
+		  </p>
+		  <br>
+		  <br>
+		  <img src = "IMG/kahootlogo.png" alt = "Kahoot" align = "middle" width = "300" height = "300">
+		  <br>
+		  <br>
+		  <p><b>Wireframe of Website</b></p>
+		  <img src = "IMG/wireframe.jpg">
+		  <br>
+		  <br>
+		  <p><b>What is Climate Change?</b></p>
+		  <p>Climate change is the change in climate caused by the greenhouse effect. When we put gases
+		  such as carbon dioxide, methane and nitrous oxide into the atmosphere, it prevents the heat of the sun from
+		  leaving the Earth, causing the Earth to heat up. The purpose of this project was to educate the user on exactly which countries were most responsible
+		  for global warming over the years. Usually the answer is not obvious - for example, Syria is a major producer of greenhouse gases. The world at the moment is balanced 
+		  precariously between survival and apocalypse - and it is crucial to inform people about the perpatrator countries to hold the guilty responsible for their actions.
+		  </p>
+		  <br>
+		  <img src = "IMG/bushfires.jpg" alt = "Bushfires in Australia" align = "middle" width = "450" height = "300">
+		  <br>
+		  <p><b>Choice of Project / Targeted User</b></p>
+		  <p>A quiz allows the user to interpret the data themselves - they may not necessarily be correct, but should the user give the wrong answer, 
+		  there will be a graphic indicating the correct answer. This is facilitated using a multiple-choice format. The quiz itself, of course, 
+		  provides the interactive element. Thus, the roguelike quiz successfully fulfils all tasks set out in the brief. The quiz caters to users of all ages. 
+		  Specifically, however, it caters to those under the age of 18, who disproportionately play more games than people of other ages.
+</p>
+		  <br>
+          <p><b>Development Model</b></p>
+		  <p>I chose the Spiral Model for my project. The Spiral Model has conventionally been used with small development teams working on specific tasks, however this 
+		  can be weaved into my project as my project is a fully scalable idea. The model is very well suited towards projects that require constant redrafting, such as this one - 
+		  and as such it helps me reduce the risk that the overall statistics may be impacted by a lack of precision in one of the smaller datasets.
+		  <br>
+		  <br>
+		  <p><b>Choice of Architecture</b><p>
+		  <p>I have opted to use .CSV files for datasets, because they are the easiest to work with. I am using Python to process and organise the data as 
+		  the Pandas module is particularly useful when dealing with CSV files. Python is particularly good for programs involving data analysis. Python organises the data into nested dictionaries 
+		  to write it easily to JSON files. I required a highly organised structure within Firebase, so I used JSON to organise the data, then I imported the JSON file into Firebase. I used the 
+		  Firebase CDN to get Firebase to work with Javascript. I chose Javascript and HTML to create my artefact site, because they are the most commonly used languages.
+		  </p>
+		  <br><br>
+		  <img src = "IMG/architecturediagram.jpg">
+		  <p><b>Timeline</b><p>
+		  <p>This is the timeline for the project.
+		  </p>
+          <img src = "IMG/timeline.png" width = "600" height = "800">
+         
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

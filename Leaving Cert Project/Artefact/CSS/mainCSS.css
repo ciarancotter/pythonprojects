@@ -1,0 +1,46 @@
+body {
+    background-color: #ffffff;
+}
+
+.button {
+  position: absolute;
+  padding: 20px;
+  width: 300px;
+  background-color: #5CDB94;
+  text-align: center;
+  border-radius: 5px;
+  left: -10%;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 150%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+
+}
+
+.text {
+  font-family: system-ui;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+canvas
+{
+	padding: 0;
+	margin: auto;
+	display: block;
+	width: 1600px;
+	height: 700px;
+	text-align: center;
+}
+
+.ml3 {
+  font-weight: 900;
+  font-size: 3.5em;
+  text-align: center;
+  font-family: Garamond;
+}
