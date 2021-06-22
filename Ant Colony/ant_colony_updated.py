@@ -1,10 +1,8 @@
 """
 Project Overview: Ant Simulation
-
 This project simulates the behaviour of an ant. The ants spawn at the nest (which is randomly placed) and wander around until
 they die. They produce offspring to keep the anthill going. This is the prototype, I intend to add the mechanics for pheremone placement
 to and from a food source to fully simulate the Ant Colony Optimisation method to (hopefully) a basic level.
-
 """
 
 #Importing shtuff
@@ -16,7 +14,7 @@ import matplotlib.pyplot as plt
 from pygame.locals import *
 
 #initialising pygame
-screen = (400, 300)
+screen = (800, 600)
 pg.init()
 myDisplay = pg.display.set_mode(screen)
 immutable = pg.Surface(screen)
@@ -25,8 +23,10 @@ reproductionNumber = 49
 colony = []
 
 #Variables that can be adjusted!
-population = 100
-delay = 0.05
+population = 1000
+delay = 0.01
+distance = 3
+nests = 3
 
 #matplotlib
 populationData = []
@@ -75,8 +75,8 @@ def moveAnts(acolony):
     #set old position to a black pixel
     myDisplay.set_at((ant.xpos, ant.ypos), (0,0,0))
     #change position
-    newxpos = ant.xpos + (random.randint(-1, 1))
-    newypos = ant.ypos + (random.randint(-1, 1))
+    newxpos = ant.xpos + (random.randint(-1 * distance, distance))
+    newypos = ant.ypos + (random.randint(-1 * distance, distance))
     ant.xpos = newxpos
     ant.ypos = newypos
     #draw ant in new position
@@ -100,20 +100,12 @@ def moreAnts(myColony, myNest):
       newAnt = Ant(myNest)
       colony.append(newAnt)
       newAnt.exist()
-
-#Leave a signal
-def leaveFoodSignal(ant):
-
-#Strengthening the pheremone pathway
-def trackPheremone(colony):
-    for ant in colony:
-        if myDisplay.get_at((ant.xpos + 1, ant.ypos + 1)) == (0,255,0):
-            print("Food_pheremone!")
-      
-      
+        
 #run the code  
-nest = Nest()
-antCreation(nest)
+for i in range(0, nests):
+    nest = Nest()
+    antCreation(nest)
+
 pg.display.update()
 
 #ever-lasting loop
@@ -124,7 +116,6 @@ while True:
             pg.quit()
         pg.display.update()
     moveAnts(colony)
-    trackPheremone(colony)
     ageAnts(colony)
     moreAnts(colony, nest)
     pg.display.update()
@@ -134,5 +125,3 @@ while True:
       plt.plot(populationData)
       plt.savefig("graphOfPopulation.png")
       break
-    
-            
